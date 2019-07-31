@@ -4,6 +4,9 @@
     <title>Student Confirmation</title>
 </head>
 <body>
-    The new student, {{first_name}} {{last_name}}, (Github = {{github}}) has been added to the database!
+    The new student, {{ first_name }} {{ last_name }}, (Github = {{ github }}) 
+    has been added to the database!
+    <br>
+    <a href="/student?github={{ github }}">Check out their student profile.</a>
 </body>
 </html>

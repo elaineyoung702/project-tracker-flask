@@ -15,8 +15,10 @@ def get_student():
 
     first, last, github = hackbright.get_student_by_github(github)
 
+    grades = hackbright.get_grades_by_github(github)
+
     return render_template('student_info.html', github=github, first=first, 
-                            last=last)
+                            last=last, grades=grades)
 
 
 @app.route("/student_search")
@@ -26,7 +28,7 @@ def get_student_form():
     return render_template("student_search.html")
 
 
-@app.route("/student_add", methods=['GET','POST'])
+@app.route("/student_add", methods=['GET'])
 def student_add():
     """Add student to database."""
 
