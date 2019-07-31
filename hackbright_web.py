@@ -35,7 +35,7 @@ def student_add():
     return render_template("student_add.html")
 
 
-@app.route("/student_conf", methods=['GET','POST'])
+@app.route("/student_conf", methods=['POST'])
 def show_conf_page():
     """Show page confirming new student added."""
 
