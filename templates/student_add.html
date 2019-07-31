@@ -4,16 +4,19 @@
     <title>Adding Student</title>
 </head>
 <body>
-    <form action="/student_search?{{github}}">
+    <form action="/student_conf" method="POST">
         <label>
             Student's First Name: <input type="text" name="first_name">
         </label>
+        <br>
         <label>
             Student's Last Name: <input type="text" name="last_name">
         </label>
+        <br>
         <label>
             Student's Github: <input type="text" name="github">
         </label>
+        <br>
         <input type="submit" value="Create Student in Database">
     </form>
 

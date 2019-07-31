@@ -26,26 +26,26 @@ def get_student_form():
     return render_template("student_search.html")
 
 
-@app.route("/student-add", methods=['POST'])
+@app.route("/student_add", methods=['GET','POST'])
 def student_add():
     """Add student to database."""
+
+    return render_template("student_add.html")
+
+
+@app.route("/student_conf", methods=['GET','POST'])
+def show_conf_page():
+    """Show page confirming new student added."""
 
     first_name = request.form.get('first_name')
     last_name = request.form.get('last_name')
     github = request.form.get('github')
 
+    hackbright.make_new_student(first_name, last_name, github)
+    # first_name, last_name, github = hackbright.make_new_student(first_name, last_name, github)
 
-    first_name, last_name, github = hackbright.make_new_student(first_name, 
-                                                            last_name, github)
-
-    return render_template("student_add.html", first_name=first_name, 
-                            last_name=last_name, github=github)
-
-    print(first_name, last_name, github)
-
-
-
-
+    return render_template("/student_conf.html", first_name=first_name, 
+                           last_name=last_name, github=github)
 
 
 if __name__ == "__main__":

@@ -47,15 +47,24 @@ def make_new_student(first_name, last_name, github):
 
     QUERY = """
         INSERT INTO students (first_name, last_name, github)
-          VALUES (:first_name, :last_name, :github)
+          VALUES (:first_name, :last_name, :github) --;
+
+        -- SELECT first_name, last_name, github
+        -- FROM students
+        -- WHERE github = :github
         """
 
-    db.session.execute(QUERY, {'first_name': first_name,
+    db_cursor = db.session.execute(QUERY, {'first_name': first_name,
                                'last_name': last_name,
                                'github': github})
+
+    # row = db_cursor.fetchone()
+
     db.session.commit()
 
     print(f"Successfully added student: {first_name} {last_name}")
+
+    # return row
 
 
 def get_project_by_title(title):
