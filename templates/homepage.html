@@ -6,18 +6,18 @@
 <body>
     <h1>Students</h1>
     <ul>
-        {% for row in student_rows %}
+        {% for (first_name, last_name, github) in student_rows %}
             <li>
-                <a href="/student?github={{ row[2] }}">{{ row[0] }} {{ row[1] }}</a>
+                <a href="/student?github={{ github }}">{{ first_name }} {{ last_name }}</a>
             </li>
         {% endfor %}
     </ul>
     <br>
     <h1>Projects</h1>
     <ul>
-        {% for row in project_rows %}
+        {% for (title,) in project_rows %}
             <li>
-                <a href="/project?title={{ row[0] }}">{{ row[0] }}</a>
+                <a href="/project?title={{ title }}">{{ title }}</a>
             </li>
         {% endfor %}
     </ul>
