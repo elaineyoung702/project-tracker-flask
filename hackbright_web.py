@@ -46,8 +46,19 @@ def show_conf_page():
     hackbright.make_new_student(first_name, last_name, github)
     # first_name, last_name, github = hackbright.make_new_student(first_name, last_name, github)
 
-    return render_template("/student_conf.html", first_name=first_name, 
+    return render_template("student_conf.html", first_name=first_name, 
                            last_name=last_name, github=github)
+
+@app.route("/project")
+def show_project():
+    """Show all details for project"""
+
+    title = request.args.get("title")
+
+    title, description, max_grade = hackbright.get_project_by_title(title)
+
+    return render_template("project.html", title=title, description=description, 
+                            max_grade=max_grade) 
 
 
 if __name__ == "__main__":
