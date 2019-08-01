@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome!</title>
+</head>
+<body>
+    <h1>Students</h1>
+    <ul>
+        {% for row in student_rows %}
+            <li>
+                <a href="/student?github={{ row[2] }}">{{ row[0] }} {{ row[1] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h1>Projects</h1>
+    <ul>
+        {% for row in project_rows %}
+            <li>
+                <a href="/project?title={{ row[0] }}">{{ row[0] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

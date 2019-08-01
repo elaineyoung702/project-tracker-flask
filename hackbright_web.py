@@ -4,7 +4,37 @@ from flask import Flask, request, render_template
 
 import hackbright
 
+from flask_sqlalchemy import SQLAlchemy
+
+
 app = Flask(__name__)
+db = SQLAlchemy()
+
+
+@app.route("/")
+def get_homepage():
+    """Display homepage"""
+
+    STUDENT_QUERY = """
+        SELECT first_name, last_name, github
+        FROM students
+        """
+
+    student_db_cursor = db.session.execute(STUDENT_QUERY)
+
+    student_rows = student_db_cursor.fetchall()
+
+    PROJECT_QUERY = """
+        SELECT title
+        FROM projects
+        """
+
+    project_db_cursor = db.session.execute(PROJECT_QUERY)
+
+    project_rows = project_db_cursor.fetchall()
+
+    return render_template("homepage.html", student_rows=student_rows,
+                            project_rows=project_rows)
 
 
 @app.route("/student")
